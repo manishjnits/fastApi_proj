@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  web:
+    build: .
+    container_name: fastapi_app_dev
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/code/app   # mount local folder for live reload
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
